@@ -7,12 +7,12 @@ export default {
   theme: {
     extend: {
       backgroundImage:{
-        'football': "url('./hero-football.png')",
-        'basketball': "url('./hero-basketball.png')",
-        'esgrima': "url('./hero-esgrima.png')",
-        'bicycle': "url('./hero-bicycle.png')",
-        'running': "url('./hero-running.png')",
-        'promo': "url('./promo-bg.png')"
+        'football': "url('./assets/hero-football.png')",
+        'basketball': "url('./assets/hero-basketball.png')",
+        'esgrima': "url('./assets/hero-esgrima.png')",
+        'bicycle': "url('./assets/hero-bicycle.png')",
+        'running': "url('./assets/hero-running.png')",
+        'promo': "url('./assets/promo-bg.png')"
       },
       fontFamily:{
         'open': "'Open Sans Variable', sans-serif;"

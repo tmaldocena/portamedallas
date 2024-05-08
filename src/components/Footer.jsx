@@ -3,7 +3,7 @@ const Footer = () => {
         <footer>
             <div className="footer p-10 bg-base-200 text-base-content">
                 <aside>
-                    <img src="./logo-portamedallas-1.png" alt="footer logo" height={64} width={64} />
+                    <img src="./assets/logo-portamedallas-1.png" alt="footer logo" height={64} width={64} />
                     <p className="text-xl text-primary font-bold">Portamedallas</p>
                     <p className="text-primary">Portando tus logros desde 2016</p>
                 </aside>

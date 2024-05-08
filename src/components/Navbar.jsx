@@ -19,7 +19,7 @@ const Navbar = () => {
             </div>
             </div>
             <div className="xl:navbar-center xl:inline-block hidden">
-                <a className="btn btn-link text-xl "><img src='./logo-portamedallas-1.png' height={56} width={56}></img></a>
+                <a className="btn btn-link text-xl "><img src='./assets/logo-portamedallas-1.png' height={56} width={56}></img></a>
             </div>
             <div className="navbar-end lg:gap-2 gap-1">
                 <div className="dropdown dropdown-end">

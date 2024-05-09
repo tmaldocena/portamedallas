@@ -1,36 +1,46 @@
 const Footer = () => {
     return (
         <footer>
-            <div className="footer p-10 bg-base-200 text-base-content">
+            <div className="footer p-10 bg-base-200 font-open">
                 <aside>
-                    <img src="./assets/logo-portamedallas-1.png" alt="footer logo" height={64} width={64} />
-                    <p className="text-xl text-primary font-bold">Portamedallas</p>
-                    <p className="text-primary">Portando tus logros desde 2016</p>
+                    <img src="./assets/logo-portamedallas-3.png" alt="footer logo" height={192} width={192} />
+                    <p className="text-primary font-semibold">Portando tus logros desde 2016</p>
                 </aside>
                 <nav>
-                    <h6 className="footer-title">Services</h6>
-                    <a className="link link-hover">Branding</a>
-                    <a className="link link-hover">Design</a>
-                    <a className="link link-hover">Marketing</a>
-                    <a className="link link-hover">Advertisement</a>
+                    <h6 className="text-primary text-xl mb-2 font-semibold">Tienda</h6>
+                    <a className="link link-hover">Productos</a>
+                    <a className="link link-hover">Envíos y Devoluciones</a>
+                    <a className="link link-hover">Política de Tienda</a>
+                    <a className="link link-hover">FAQ</a>
                 </nav>
                 <nav>
-                    <h6 className="footer-title">Company</h6>
-                    <a className="link link-hover">About us</a>
-                    <a className="link link-hover">Contact</a>
-                    <a className="link link-hover">Jobs</a>
-                    <a className="link link-hover">Press kit</a>
+                    <h6 className="text-primary text-xl mb-2 font-semibold">Contacto</h6>
+                    <a className="link link-hover">Formulario de contacto</a>
+                    <a className="link link-hover">Institucional</a>
+                    <br />
+                    <span className="text-semibold">Bogotá, Colombia</span>
+                    <span className="text-semibold">(+57) 320-6348134</span>
+                    <span className="text-semibold">samuelcastro@eltrolley.com</span>
                 </nav>
                 <nav>
-                    <h6 className="footer-title">Legal</h6>
-                    <a className="link link-hover">Terms of use</a>
-                    <a className="link link-hover">Privacy policy</a>
-                    <a className="link link-hover">Cookie policy</a>
+                    <h6 className="text-primary text-xl mb-2 font-semibold">Síguenos</h6>
+                    <div className="flex flew-row gap-4">
+                        <a className="link link-hover"><box-icon name="instagram" type="logo" size="lg"></box-icon></a>
+                        <a className="link link-hover"><box-icon name="facebook" type="logo" size="lg"></box-icon></a>
+                        <a className="link link-hover"><box-icon name="whatsapp" type="logo" size="lg"></box-icon></a>
+                    </div>
                 </nav>
             </div>
-            <div className="footer footer-center p-4 bg-base-300 text-base-content">
+            <div className="footer footer-center p-4 bg-primary text-base-100">
                 <aside>
-                    <p>Copyright © 2024 - All right reserved by ACME Industries Ltd</p>
+                    <div className="flex lg:flex-row flex-col align-middle gap-2 font-semibold text-xs">
+                        <span className="text-sm items-center justify-center flex gap-2">De
+                        <img src='./assets/colombia-flag.svg' alt="colombia flag" height={16} width={16}></img>
+                        <span>para todo el</span>
+                        <img src='./assets/planet.svg' alt="colombia flag" height={16} width={16}></img>
+                        </span> 
+                        <span>&copy; 2024 Portamedallas. Todos los derechos reservados.</span> 
+                    </div>
                 </aside>
             </div>
         </footer>

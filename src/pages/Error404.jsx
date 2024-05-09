@@ -1,6 +1,8 @@
 const Error404 = () => {
   return (
-    <div></div>
+    <div>
+      <h1>Sadness</h1>
+    </div>
   )
 }
 

@@ -2,7 +2,7 @@ import 'boxicons';
 
 const Navbar = () => {
     return (
-        <header className="navbar fixed z-50 bg-primary px-16">
+        <header className="navbar fixed z-50 bg-primary lg:px-16 px-4">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -15,11 +15,11 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="xl:hidden">
-                <a className="btn btn-link text-xl "><img src='./assets/logo-portamedallas-1.png' height={48} width={48}></img></a>
+                <a className="btn btn-link text-xl "><img src='./assets/logo-portamedallas-2.png' height={48} width={48}></img></a>
             </div>
             </div>
             <div className="xl:navbar-center xl:inline-block hidden">
-                <a className="btn btn-link text-xl "><img src='./assets/logo-portamedallas-1.png' height={56} width={56}></img></a>
+                <a className="btn btn-link text-xl "><img src='./assets/logo-portamedallas-2.png' height={56} width={56}></img></a>
             </div>
             <div className="navbar-end lg:gap-2 gap-1">
                 <div className="dropdown dropdown-end">
@@ -29,7 +29,7 @@ const Navbar = () => {
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-4 shadow bg-base-100 rounded-box w-auto">
                         <li className="form-control">
                                 <label className="input input-bordered flex items-center gap-2" id='searchBar'>
-                                    <input type="text" className="grow" placeholder="Search" />
+                                    <input type="text" className="grow " placeholder="Search" />
                                     <box-icon name='search'/>
                                 </label>
                             </li>

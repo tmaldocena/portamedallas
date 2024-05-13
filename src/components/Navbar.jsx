@@ -1,4 +1,5 @@
 import 'boxicons';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
@@ -9,9 +10,9 @@ const Navbar = () => {
                         <box-icon name='menu-alt-left' color='#fce7f3'></box-icon>
                     </div>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a>Homepage</a></li>
+                        <li><Link to='/'>Homepage</Link></li>
                         <li><a>Tienda</a></li>
-                        <li><a>Contacto</a></li>
+                        <li><Link to='/contact'>Contacto</Link></li>
                     </ul>
                 </div>
                 <div className="xl:hidden">
@@ -19,7 +20,7 @@ const Navbar = () => {
             </div>
             </div>
             <div className="xl:navbar-center xl:inline-block hidden">
-                <a className="btn btn-link text-xl "><img src='./assets/logo-portamedallas-2.png' height={56} width={56}></img></a>
+                <Link to='/' className="btn btn-link text-xl "><img src='./assets/logo-portamedallas-2.png' height={56} width={56}></img></Link>
             </div>
             <div className="navbar-end lg:gap-2 gap-1">
                 <div className="dropdown dropdown-end">

@@ -1,0 +1,42 @@
+[
+    {
+        "id": "PER00",
+        "tipo": "Personalizado",
+        "valor": "150.000"
+    },
+    {
+        "id": "RGE01",
+        "tipo": "Running Hombre",
+        "valor": "100.000"
+    },
+    {
+        "id": "RFR02",
+        "tipo": "Running Femenino Rosado",
+        "valor": "100.000"
+    },
+    {
+        "id": "RFN02",
+        "tipo": "Running Femenino Negro",
+        "valor": "100.000"
+    },
+    {
+        "id": "RNF03",
+        "tipo": "Runner Femenino",
+        "valor": "100.000"
+    },
+    {
+        "id": "RNM04",
+        "tipo": "Runner Masculino",
+        "valor": "100.000"
+    },
+    {
+        "id": "RMA05",
+        "tipo": "Run Masculino",
+        "valor": "70.000"
+    },
+    {
+        "id": "DDF06",
+        "tipo": "Distancias 10K Femenino",
+        "valor": "100.000"
+    }
+]

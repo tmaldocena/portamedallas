@@ -8,10 +8,10 @@ const Populars = () => {
         <p className="text-center">Conoce nuestros productos más vendidos</p>
       </div>
       <div className="flex xl:flex-row flex-col items-center lg:gap-4 gap-8 lg:px-16 px-6">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <Card item={ {tipo:'Algo', valor:'10' } }/>
+          <Card item={ {tipo:'Algo', valor:'20' } }/>
+          <Card item={ {tipo:'Algo', valor:'30' } }/>
+          <Card item={ {tipo:'Algo', valor:'40' } }/>
       </div>
     </section>
   )

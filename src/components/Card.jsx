@@ -1,6 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react"
+import { Link } from "react-router-dom";
 
-const Card = () => {
+const Card = ({ item }) => {
+
 
     const [amount, setAmount] = useState(1);
     const incrementCounter = () => setAmount(amount + 1);
@@ -10,14 +13,13 @@ const Card = () => {
     }
 
     return (
-        <div className="card lg:w-96 w-80 bg-base-100 shadow-xl">
+        <Link to={'/item/' + item.id} className="card lg:w-72 w-64 bg-base-100 shadow-xl">
             <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
             <div className="card-body">
-                <h2 className="card-title">
-                    Title
-                    <div className="badge badge-secondary">Popular!</div>
+                <h2 className="card-title text-base">
+                    { item.tipo }
                 </h2>
-                <p>$99.999</p>
+                <p>${ item.valor }</p>
                 <div className="card-actions justify-between items-center">
                     <div>
                         <button className="btn btn-sm btn-square" onClick={ decrementCounter }>-</button>
@@ -30,7 +32,7 @@ const Card = () => {
                     </button>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 

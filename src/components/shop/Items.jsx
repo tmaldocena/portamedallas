@@ -8,7 +8,7 @@ const Items = ({ products }) => {
     console.log(products);
 
     return (
-        <div className="w-4/5 px-8 flex flex-wrap gap-4">
+        <div className="lg:w-4/5 w-full justify-center lg:px-8 px-4 flex flex-wrap lg:gap-4 gap-8">
                 { products.map((prod,key) => {
                     return (
                         <Card item={prod} key={key} />

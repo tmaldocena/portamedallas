@@ -27,15 +27,15 @@ const Shop = () => {
             <div className="w-full bg-accent py-8">
                 <h2 className="text-center text-3xl">Portamedallas</h2>
             </div>
-            <div className="flex flex-row items-center">
-                <h2 className="w-1/5 p-8 text-3xl font-bold">Tienda</h2>
-                <div className="w-4/5 flex flex-row items-center justify-center">
-                    <label className="w-3/4 input input-bordered flex items-center gap-2">
+            <div className="flex lg:flex-row flex-col items-center">
+                <h2 className="lg:w-1/5 w-auto p-8 text-3xl font-bold">Tienda</h2>
+                <div className="lg:w-4/5 w-full lg:px-8 md:px-6 px-4 flex lg:flex-row flex-col lg:gap-0 gap-4 items-center justify-center">
+                    <label className="lg:w-3/4 w-full input input-bordered flex items-center gap-2">
                         <input type="text" className="grow" value={searchItem} placeholder="Buscar..." onChange={handleInputChange} />
                         <box-icon name='search'></box-icon>
                     </label>
-                    <div className="dropdown w-1/4">
-                        <div tabIndex={0} role="button" className="btn m-1">
+                    <div className="dropdown lg:w-1/4 w-full">
+                        <div tabIndex={0} role="button" className="btn w-full m-1">
                             Ordenar por
                             <box-icon name='chevron-down'></box-icon>
                         </div>
@@ -48,7 +48,7 @@ const Shop = () => {
                     </div>
                 </div>
             </div>
-            <div className="p-8 min-h-[80vh] flex flex-row">
+            <div className="p-8 min-h-[80vh] flex lg:flex-row flex-col">
                 <Filters />
                 <Items products={filteredItems} />
             </div>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 const Promo = () => {
     return (
@@ -7,7 +8,7 @@ const Promo = () => {
                 <div className="max-w-md">
                     <box-icon name='medal' type='solid' color='#fce7f3' ></box-icon>
                     <h1 className="mb-5 text-3xl text-base-100 font-bold font-open">Tu único límite eres tu</h1>
-                    <button className="btn btn-secondary">Compra ahora</button>
+                    <Link to='/tienda' className="btn btn-secondary">Compra ahora</Link>
                 </div>
             </div>
         </div>

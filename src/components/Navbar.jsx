@@ -1,7 +1,13 @@
 import 'boxicons';
 import { Link } from 'react-router-dom';
+import Autocomplete from './Autocomplete';
+
+//import products from '../utils/products.json';
+//import { useState } from 'react';
 
 const Navbar = () => {
+
+
     return (
         <header className="navbar fixed z-50 bg-primary lg:px-16 px-4">
             <div className="navbar-start">
@@ -16,8 +22,8 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="xl:hidden">
-                <a className="btn btn-link text-xl "><img src='./assets/logo-portamedallas-2.png' height={48} width={48}></img></a>
-            </div>
+                    <a className="btn btn-link text-xl "><img src='./assets/logo-portamedallas-2.png' height={48} width={48}></img></a>
+                </div>
             </div>
             <div className="xl:navbar-center xl:inline-block hidden">
                 <Link to='/' className="btn btn-link text-xl "><img src='./assets/logo-portamedallas-2.png' height={56} width={56}></img></Link>
@@ -28,12 +34,7 @@ const Navbar = () => {
                         <box-icon name='search' color='#fce7f3'></box-icon>
                     </div>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-4 shadow bg-base-100 rounded-box w-auto">
-                        <li className="form-control">
-                                <label className="input input-bordered flex items-center gap-2" id='searchBar'>
-                                    <input type="text" className="grow " placeholder="Search" />
-                                    <box-icon name='search'/>
-                                </label>
-                            </li>
+                        <Autocomplete />
                     </ul>
                 </div>
 

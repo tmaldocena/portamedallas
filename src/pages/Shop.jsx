@@ -11,16 +11,31 @@ const Shop = () => {
     const [searchItem, setSearchItem] = useState('')
     const [filteredItems, setFilteredItems] = useState(products)
 
+    const [filters, setFilters] = useState({
+        category: 'all',
+        maxPrice: 150001,
+        colors: ['blue', 'orange', 'black', 'pink']
+    });
+
     const handleInputChange = (e) => {
         const searchTerm = e.target.value;
         setSearchItem(searchTerm)
-
         const filteredItems = products.filter((user) =>
             user.tipo.toLowerCase().includes(searchTerm.toLowerCase())
         );
-
         setFilteredItems(filteredItems);
     }
+
+    const filterProducts = () => {
+        return filteredItems.filter((prod) => 
+            prod.valor <= filters.maxPrice
+        )
+    }
+
+
+    let fiProd = filterProducts()
+
+    fiProd = filteredItems.filter((prod) =>  prod.category === filters.category || filters.category === 'all')
 
     return (
         <section className={"w-full pt-[4.8rem] text-primary font-open"} >
@@ -49,8 +64,8 @@ const Shop = () => {
                 </div>
             </div>
             <div className="p-8 min-h-[80vh] flex lg:flex-row flex-col">
-                <Filters />
-                <Items products={filteredItems} />
+                <Filters setFilters={setFilters} />
+                <Items products={fiProd} />
             </div>
         </section>
     )

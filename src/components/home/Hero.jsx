@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const Hero = () => {
@@ -25,7 +26,7 @@ const Hero = () => {
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-xl">
                         <h1 className="mb-5 lg:text-5xl text-3xl text-white font-bold font-open">Dale importancia a tus logros con portamedallas</h1>
-                        <button className="btn btn-outline btn-accent">Comprar ahora</button>
+                        <Link to='/tienda' className="btn btn-outline btn-accent">Comprar ahora</Link>
                     </div>
                 </div>
             </div>

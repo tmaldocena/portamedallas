@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 const Contact = () => {
   return (
@@ -7,7 +8,7 @@ const Contact = () => {
                 <box-icon name='medal' type='solid' color='#fce7f3' ></box-icon>
                 <h2 className="mb-2 text-3xl text-primary font-bold font-open">¿Dudas o consultas?</h2>
                 <p>Estamos atentos a ayudarte con tu compra o propuesta institucional</p>
-                <button className="mt-5 btn btn-secondary">Contacto</button>
+                <Link to='/contact' className="mt-5 btn btn-secondary">Contacto</Link>
             </div>
         </div>
     </section>

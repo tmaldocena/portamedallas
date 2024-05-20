@@ -1,4 +1,5 @@
 import { useRef } from "react"
+import { Link } from "react-router-dom";
 
 
 const categories = [
@@ -57,7 +58,7 @@ const Carousel = () => {
         <div className="font-open">
             <div className="flex flex-row gap-2 lg:px-16 px-4 items-baseline my-4">
                 <h3 className="flex-none text-2xl font-bold text-primary">Filtrar por categoría</h3>
-                <a href="*" className="flex-none text-gray-500 hover:text-primary">ver todo</a>
+                <Link to='/tienda' className="flex-none text-gray-500 hover:text-primary">ver todo</Link>
                 <div className="ml-auto flex gap-2 justify-between">
                     <button onClick={ focusFirst } className="btn lg:btn-sm btn-xs btn-circle">❮</button>
                     <button onClick={ focusLast } className="btn lg:btn-sm btn-xs btn-circle">❯</button>

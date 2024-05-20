@@ -1,7 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import products from '../utils/products.json';
 import { useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import ViewImage from '../components/product/ViewImage';
+import { Link } from 'react-router-dom';
+
 
 const ViewItem = () => {
 
@@ -11,27 +13,51 @@ const ViewItem = () => {
 
     useEffect(() => {
         setItem(products.find((item) => item.id === location.pathname.slice(6)));
-        console.log(item);
     }, []);
 
     return (
-        <div className="hero min-h-screen bg-base-200 px-16">
-            <div className="flex flex-col lg:flex-row gap-4 justify-center">
-                <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" className="rounded-lg shadow-2xl" />
-                <div className=''>
-                    <h1 className="text-5xl font-bold">{item.tipo || 'Product'}</h1>
+        <div className="min-h-screen bg-base-200 px-16 py-24">
+            <div className="flex flex-col lg:flex-row gap-x-12 items-center justify-evenly pb-8">
+                <div>
+                    <div className="text-sm breadcrumbs">
+                        <ul>
+                            <li><Link to='/'>Home</Link></li>
+                            <li><Link to='/tienda'>Tienda</Link></li>
+                            <li>Ver {item.tipo} </li>
+                        </ul>
+                    </div>
+
+                    <ViewImage item={item} />
+                </div>
+                
+                <div>
+                    <h1 className="text-4xl font-bold">{item.tipo || 'Product'}</h1>
                     <span>{item.id}</span>
-                    <h3>${item.valor}</h3>
-                    <label className="w-auto">
+                    <h3 className='my-4 text-3xl'>${item.valor}</h3>
+                    <label className="w-auto flex flex-row my-4">
                         <div className="label">
-                            <span className="label-text">Cantidad</span>
+                            <span className="label-text">Cantidad:</span>
                         </div>
-                        <input type="number" name="amount" className="input input-bordered w-full" />
+                        <input type="number" name="amount" min={1} className="input input-bordered w-1/4" />
                     </label>
                     <div className='flex flex-col gap-4'>
                         <button className='btn btn-primary'><box-icon name="cart" color="#FFF" />Agregar al carrito</button>
                         <button className='btn btn-secondary'>Comprar ahora</button>
                     </div>
+                </div>
+            </div>
+            <p className='collapse-title'>Organiza y exhibe tus medallas de una manera práctica y con buen gusto. Por su diseño original es agradable en cualquier tipo de ambiente y no daña paredes.</p>
+            <div className="collapse collapse-plus bg-none">
+                <input type="checkbox" />
+                <div className="collapse-title text-xl font-medium">
+                    Instrucciones de Instalación
+                </div>
+                <div className="collapse-content">
+                    <ul>
+                        <li><strong>Limpie la superficie:</strong> Certifique que la superficie esté lisa, libre de poros y humedad. Limpie con detergente, luego alcohol y deje secar.</li>
+                        <li><strong>Presione firme:</strong> Quite la parte posterior de la cinta adhesiva y presione firmemente el portamedallas en la pared.</li>
+                        <li><strong>Espere:</strong> Deje pasar 24 horas antes de colgar sus medallas.</li>
+                    </ul>
                 </div>
             </div>
         </div>

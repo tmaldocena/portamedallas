@@ -1,42 +1,106 @@
 [
     {
-        "id": "PER00",
-        "tipo": "Personalizado",
-        "valor": "150.000"
-    },
-    {
         "id": "RGE01",
         "tipo": "Running Hombre",
-        "valor": "100.000"
+        "valor": 100000,
+        "category": "a",
+        "firstImage": "/assets/products/running/running.jpg",
+        "images": [
+            "/assets/products/running/running-2.jpg",
+            "/assets/products/running/running-3.jpg",
+            "/assets/products/running/running-4.jpg",
+            "/assets/products/running/running.jpg"
+        ]
+    },
+    {
+        "id": "PER00",
+        "tipo": "Personalizado",
+        "valor": 150000,
+        "category": "a",
+        "firstImage": "/assets/products/running/running.jpg",
+        "images": [
+            "/assets/products/running/running.jpg",
+            "/assets/products/running/running-2.jpg",
+            "/assets/products/running/running-3.jpg",
+            "/assets/products/running/running-4.jpg"
+        ]
     },
     {
         "id": "RFR02",
         "tipo": "Running Femenino Rosado",
-        "valor": "100.000"
+        "valor": 100000,
+        "category": "a",
+        "firstImage": "/assets/products/running/running.jpg",
+        "images": [
+            "/assets/products/running/running.jpg",
+            "/assets/products/running/running-2.jpg",
+            "/assets/products/running/running-3.jpg",
+            "/assets/products/running/running-4.jpg"
+        ]
     },
     {
         "id": "RFN02",
         "tipo": "Running Femenino Negro",
-        "valor": "100.000"
+        "valor": 100000,
+        "category": "a",
+        "firstImage": "/assets/products/running/running.jpg",
+        "images": [
+            "/assets/products/running/running.jpg",
+            "/assets/products/running/running-2.jpg",
+            "/assets/products/running/running-3.jpg",
+            "/assets/products/running/running-4.jpg"
+        ]
     },
     {
         "id": "RNF03",
         "tipo": "Runner Femenino",
-        "valor": "100.000"
+        "valor": 100000,
+        "category": "a",
+        "firstImage": "/assets/products/running/running.jpg",
+        "images": [
+            "/assets/products/running/running.jpg",
+            "/assets/products/running/running-2.jpg",
+            "/assets/products/running/running-3.jpg",
+            "/assets/products/running/running-4.jpg"
+        ]
     },
     {
         "id": "RNM04",
         "tipo": "Runner Masculino",
-        "valor": "100.000"
+        "valor": 100000,
+        "category": "b",
+        "firstImage": "/assets/products/running/running.jpg",
+        "images": [
+            "/assets/products/running/running.jpg",
+            "/assets/products/running/running-2.jpg",
+            "/assets/products/running/running-3.jpg",
+            "/assets/products/running/running-4.jpg"
+        ]
     },
     {
         "id": "RMA05",
         "tipo": "Run Masculino",
-        "valor": "70.000"
+        "valor": 70000,
+        "category": "b",
+        "firstImage": "/assets/products/running/running.jpg",
+        "images": [
+            "/assets/products/running/running.jpg",
+            "/assets/products/running/running-2.jpg",
+            "/assets/products/running/running-3.jpg",
+            "/assets/products/running/running-4.jpg"
+        ]
     },
     {
         "id": "DDF06",
         "tipo": "Distancias 10K Femenino",
-        "valor": "100.000"
+        "valor": 100000,
+        "category": "b",
+        "firstImage": "/assets/products/running/running.jpg",
+        "images": [
+            "/assets/products/running/running.jpg",
+            "/assets/products/running/running-2.jpg",
+            "/assets/products/running/running-3.jpg",
+            "/assets/products/running/running-4.jpg"
+        ]
     }
 ]

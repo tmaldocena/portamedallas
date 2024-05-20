@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 
-const Filters = () => {
+const Filters = ({ setFilters }) => {
 
-
-    const [range, setRange] = useState(1000);
+    const [range, setRange] = useState(150000);
+    const [category, setCategory] = useState('all');
 
     const categories = [
         'Deportes Grupales',
@@ -15,7 +16,9 @@ const Filters = () => {
         'Gymnastics',
         'Tenis',
         'Mascotas/Portacollares',
-        'Triatlón'
+        'Triatlón',
+        'a',
+        'b'
     ]
 
     const colors = [
@@ -26,8 +29,22 @@ const Filters = () => {
     ]
 
     const handleChange = (e) => {
-        setRange(e.target.value)
+        setRange(e.target.value);
+        setFilters(prevState => ({
+            ...prevState,
+            maxPrice: e.target.value
+        }))
     }
+
+    const changeCat = (e) => {
+        setCategory(e.target.value);
+        setFilters(prevState => ({
+            ...prevState,
+            category: category
+        }))
+    }
+
+
     return (
         <>
             <div className="lg:hidden collapse">
@@ -47,10 +64,10 @@ const Filters = () => {
                         </div>
                         <div className="collapse-content">
                             <div className="flex flex-col items-start">
-                                <input type="radio" name="category" aria-label='Todos' className="btn btn-sm btn-link no-underline hover:no-underline" />
+                                <input type="radio" name="category" value='all' aria-label='Todos' className="btn btn-sm btn-link no-underline hover:no-underline"/>
                                 {categories.map((cat, key) => {
                                     return (
-                                        <input type="radio" name="category" key={key} aria-label={cat} className="btn btn-sm btn-link no-underline hover:no-underline" />
+                                        <input type="radio" name="category" key={key} aria-label={cat} className="btn btn-sm btn-link no-underline hover:no-underline"/>
                                     )
                                 })}
                             </div>
@@ -67,8 +84,9 @@ const Filters = () => {
                         </div>
                         <div className="collapse-content">
                             <div className="tooltip tooltip-primary w-full" data-tip={'$' + range}>
-                                <input type="range" min={0} max="1000" value={range} className="range range-primary" onChange={handleChange} />
+                                <input type="range" min={70000} max={150001} value={range} className="range range-primary" onChange={handleChange} />
                             </div>
+                            <span>Precio:  { range }</span>
                         </div>
                     </div>
 
@@ -104,14 +122,17 @@ const Filters = () => {
                         <box-icon name='chevron-down'></box-icon>
                     </div>
                     <div className="collapse-content">
-                        <div className="flex flex-col items-start">
-                            <input type="radio" name="category" aria-label='Todos' className="btn btn-sm btn-link no-underline hover:no-underline" />
+                    <form>
+
+                        <div className="flex flex-col items-start" >
+                            <input type="radio" name="category" value='all' aria-label='Todos' className="btn btn-sm btn-link no-underline hover:no-underline" checked={category==='all'} onClick={changeCat}/>
                             {categories.map((cat, key) => {
                                 return (
-                                    <input type="radio" name="category" key={key} aria-label={cat} className="btn btn-sm btn-link no-underline hover:no-underline" />
+                                    <input type="radio" name="category" key={key} value={cat} aria-label={cat} className="btn btn-sm btn-link no-underline hover:no-underline" onClick={changeCat}/>
                                 )
                             })}
                         </div>
+                    </form>
                     </div>
                 </div>
 
@@ -125,7 +146,8 @@ const Filters = () => {
                     </div>
                     <div className="collapse-content">
                         <div className="tooltip tooltip-primary w-full" data-tip={'$' + range}>
-                            <input type="range" min={0} max="1000" value={range} className="range range-primary" onChange={handleChange} />
+                            <input type="range" min={70000} max={150001} value={range} className="range range-primary" onChange={handleChange} />
+                            <span>Precio: ${ range }</span>
                         </div>
                     </div>
                 </div>
@@ -139,7 +161,7 @@ const Filters = () => {
                         <box-icon name='chevron-down'></box-icon>
                     </div>
                     <div className="collapse-content">
-                        <div className="flex flex-col items-start">
+                        <div className="flex flex-col gap-2 items-start">
                             {colors.map((color, key) => {
                                 return (
                                     <input type="checkbox" key={key} aria-label={color.name} defaultChecked className='btn btn-sm btn-link no-underline hover:no-underline' />

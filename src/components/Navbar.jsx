@@ -1,11 +1,16 @@
 import 'boxicons';
 import { Link } from 'react-router-dom';
 import Autocomplete from './Autocomplete';
+import UseCart from '../hooks/useCart';
 
 //import products from '../utils/products.json';
 //import { useState } from 'react';
 
 const Navbar = () => {
+    const { cart, clearCart, getTotal } = UseCart()
+
+    console.log(cart);
+
 
 
     return (
@@ -58,13 +63,38 @@ const Navbar = () => {
                     </div>
                     <div className="drawer-side">
                         <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-                        <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+                        <ul className="menu justify-end p-4 w-80 min-h-full bg-base-200 text-base-content">
                             {/* Sidebar content here */}
-                            <li className='btn btn-success'><a>Ver Carrito</a></li>
+                            <ul>
+                                {cart.map((prod, index) => {
+                                    return (
+                                        <li className='flex flex-row items-center justify-between py-2' key={index}>
+                                            <span className='flex flex-row hover:bg-base-200 hover:text-primary'>
+                                                <div className="avatar">
+                                                    <div className="w-8 rounded">
+                                                        <img src={prod.firstImage} />
+                                                    </div>
+                                                </div>
+                                                <div className='flex flex-col'>
+                                                    <span>{prod.tipo}</span>
+                                                    <span className='text-xs'>${prod.valor}</span>
+                                                </div>
+                                            </span>
+                                            <span>x{prod.quantity}</span>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                            <li className='font-bold text-xl text-center text-primary mb-2'>Total: ${ getTotal() }</li>
+
+                            <li className='btn btn-sm btn-accent mb-4' onClick={() => clearCart()}><a>Vaciar Carrito</a></li>
+
+                            <li className='btn btn-primary'><Link to='/cart'>Ver Carrito</Link></li>
                         </ul>
                     </div>
                 </div>
             </div>
+
         </header>
     )
 }

@@ -5,6 +5,7 @@ import Error404 from './pages/Error404';
 import Contact from './pages/Contact';
 import Shop from './pages/Shop';
 import ViewItem from './pages/ViewItem';
+import CheckCart from './pages/CheckCart';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path='/tienda' index element={ <Shop /> }/>
           <Route path='/item/:id' element={ <ViewItem /> } />
           <Route path='/contact' element={ <Contact />} />
+          <Route path='/cart' element={ <CheckCart /> } />
           <Route path='*' index element={ <Error404 /> }/>
       </Routes>
     </DefaultLayout>

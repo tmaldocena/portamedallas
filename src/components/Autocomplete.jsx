@@ -36,7 +36,7 @@ function Autocomplete() {
                                         <span className='flex flex-row hover:bg-base-200 hover:text-primary'>
                                             <div className="avatar">
                                                 <div className="w-8 rounded">
-                                                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" alt="Tailwind-CSS-Avatar-component" />
+                                                    <img src={result.firstImage} />
                                                 </div>
                                             </div>
                                             <div className='flex flex-col'>

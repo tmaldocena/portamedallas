@@ -1,14 +1,15 @@
 /* eslint-disable react/prop-types */
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
+import { CartProvider } from "../context/cart"
 
 const DefaultLayout = ( { children }) => {
   return (
-    <div>
+    <CartProvider>
         <Navbar />
         { children }
         <Footer />
-    </div>
+    </CartProvider>
   )
 }
 

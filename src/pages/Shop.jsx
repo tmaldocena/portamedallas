@@ -37,6 +37,8 @@ const Shop = () => {
 
     fiProd = filteredItems.filter((prod) =>  prod.category === filters.category || filters.category === 'all')
 
+    console.log(fiProd);
+    
     return (
         <section className={"w-full pt-[4.8rem] text-primary font-open"} >
             <div className="w-full bg-accent py-8">

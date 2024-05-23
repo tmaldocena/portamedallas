@@ -89,7 +89,7 @@ const Navbar = () => {
 
                             <li className='btn btn-sm btn-accent mb-4' onClick={() => clearCart()}><a>Vaciar Carrito</a></li>
 
-                            <li className='btn btn-primary'><Link to='/cart'>Ver Carrito</Link></li>
+                            <li className={cart.length === 0 ? 'btn btn-disabled btn-outline' : 'btn btn-primary'  }><Link to='/cart'>Ver Carrito</Link></li>
                         </ul>
                     </div>
                 </div>

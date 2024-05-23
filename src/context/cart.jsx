@@ -9,12 +9,12 @@ export const CartContext = createContext();
 export function CartProvider ({ children }) {
     const [cart, setCart] = useState([]);
 
-    const addToCart = product => {
+    const addToCart = (product, quantity) => {
         const productInCart = cart.findIndex(item => item.id === product.id)
 
         if(productInCart >= 0){
             const newCart = structuredClone(cart);
-            newCart[productInCart].quantity += 1;
+            newCart[productInCart].quantity += quantity;
             return setCart(newCart);
         }
 
@@ -22,10 +22,14 @@ export function CartProvider ({ children }) {
             ...prevState,
             {
                 ...product,
-                quantity: 1
+                quantity: quantity
             }
         ]))
 
+    }
+
+    const removeCart = product => {
+        setCart( prevState => prevState.filter(item => item.id !== product.id))
     }
 
     const clearCart = () => {
@@ -45,6 +49,7 @@ export function CartProvider ({ children }) {
             cart,
             addToCart,
             clearCart,
+            removeCart,
             getTotal
         }}>
             {children}

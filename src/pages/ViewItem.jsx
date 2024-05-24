@@ -34,7 +34,7 @@ const ViewItem = () => {
     }, []);
 
     return (
-        <div className="min-h-screen bg-base-200 px-16 py-24">
+        <div className="min-h-screen bg-base-200 lg:px-16 md:px-8 sm:px-4 py-24 font-open">
             {
                 showAlert && (
                     <div className="toast z-10">
@@ -44,9 +44,9 @@ const ViewItem = () => {
                     </div>
                 )
             }
-            <div className="flex flex-col lg:flex-row gap-x-12 items-center justify-evenly pb-8">
+            <div className="flex flex-col lg:flex-row gap-x-12 items-center justify-evenly py-8">
                 <div>
-                    <div className="text-sm breadcrumbs">
+                    <div className="lg:px-0 md:px-8 px-4 text-sm breadcrumbs">
                         <ul>
                             <li><Link to='/'>Home</Link></li>
                             <li><Link to='/tienda'>Tienda</Link></li>
@@ -57,10 +57,10 @@ const ViewItem = () => {
                     <ViewImage item={item} />
                 </div>
 
-                <div>
+                <div className='lg:w-auto w-full lg:px-0 md:px-8 px-4 lg:mt-0 mt-8'>
                     <h1 className="text-4xl font-bold">{item.tipo || 'Product'}</h1>
                     <span>{item.id}</span>
-                    <h3 className='my-4 text-3xl'>${item.valor}</h3>
+                    <h3 className='lg:my-4 my-8 text-3xl'>${item.valor}</h3>
                     <label className="w-auto flex flex-row items-center my-4">
                         <div className="label">
                             <span className="label-text">Cantidad:</span>
@@ -77,7 +77,7 @@ const ViewItem = () => {
                     </div>
                 </div>
             </div>
-            <p className='collapse-title'>Organiza y exhibe tus medallas de una manera práctica y con buen gusto. Por su diseño original es agradable en cualquier tipo de ambiente y no daña paredes.</p>
+            <p className='collapse-title lg:mt-0 mt-4'>Organiza y exhibe tus medallas de una manera práctica y con buen gusto. Por su diseño original es agradable en cualquier tipo de ambiente y no daña paredes.</p>
             <div className="collapse collapse-plus bg-none">
                 <input type="checkbox" />
                 <div className="collapse-title text-xl font-medium">
@@ -86,7 +86,7 @@ const ViewItem = () => {
                 <div className="collapse-content">
                     <ul>
                         <li><strong>Limpie la superficie:</strong> Certifique que la superficie esté lisa, libre de poros y humedad. Limpie con detergente, luego alcohol y deje secar.</li>
-                        <li><strong>Presione firme:</strong> Quite la parte posterior de la cinta adhesiva y presione firmemente el portamedallas en la pared.</li>
+                        <li className='my-4'><strong>Presione firme:</strong> Quite la parte posterior de la cinta adhesiva y presione firmemente el portamedallas en la pared.</li>
                         <li><strong>Espere:</strong> Deje pasar 24 horas antes de colgar sus medallas.</li>
                     </ul>
                 </div>

@@ -7,11 +7,12 @@ import UseCart from '../hooks/useCart';
 
 
 const ViewItem = () => {
-
+    
     const { addToCart } = UseCart()
-
-    const [item, setItem] = useState({});
+    
     const location = useLocation();
+    const id = location.pathname.slice(6);
+    const [item, setItem] = useState();
 
     const [amount, setAmount] = useState(1);
     const [showAlert, setShowAlert] = useState(false);
@@ -28,9 +29,11 @@ const ViewItem = () => {
         }, 2000);
         setShowAlert(true);
     }
-
+    
+    
     useEffect(() => {
-        setItem(products.find((item) => item.id === location.pathname.slice(6)));
+        const product = products.find( prod => prod.product_id === id);
+        setItem(product);
     }, []);
 
     return (
@@ -50,7 +53,7 @@ const ViewItem = () => {
                         <ul>
                             <li><Link to='/'>Home</Link></li>
                             <li><Link to='/tienda'>Tienda</Link></li>
-                            <li>Ver {item.tipo} </li>
+                            <li>Ver portamedallas </li>
                         </ul>
                     </div>
 
@@ -58,9 +61,9 @@ const ViewItem = () => {
                 </div>
 
                 <div className='lg:w-auto w-full lg:px-0 md:px-8 px-4 lg:mt-0 mt-8'>
-                    <h1 className="text-4xl font-bold">{item.tipo || 'Product'}</h1>
-                    <span>{item.id}</span>
-                    <h3 className='lg:my-4 my-8 text-3xl'>${item.valor}</h3>
+                    <h1 className="text-4xl font-bold">{item.product_name}</h1>
+                    <span>{item.product_id}</span>
+                    <h3 className='lg:my-4 my-8 text-3xl'>${item.product_price}</h3>
                     <label className="w-auto flex flex-row items-center my-4">
                         <div className="label">
                             <span className="label-text">Cantidad:</span>
@@ -69,11 +72,11 @@ const ViewItem = () => {
                             <button className="btn btn-square" onClick={decrementCounter}><box-icon name='minus'></box-icon></button>
                             <span className="px-2 bg-base-200">{amount}</span>
                             <button className="btn btn-square" onClick={incrementCounter}><box-icon name='plus'></box-icon></button>
-                        </div>                    
+                        </div>
                     </label>
                     <div className='flex flex-col gap-4'>
-                        <button className='btn btn-primary' onClick={ () => addItem(item, amount) }><box-icon name="cart" color="#FFF"/>Agregar al carrito</button>
-                        <Link to='/cart' className='btn btn-secondary' onClick={ () => addItem(item, amount) }>Comprar ahora</Link>
+                        <button className='btn btn-primary' onClick={() => addItem(item, amount)}><box-icon name="cart" color="#FFF" />Agregar al carrito</button>
+                        <Link to='/cart' className='btn btn-secondary' onClick={() => addItem(item, amount)}>Comprar ahora</Link>
                     </div>
                 </div>
             </div>

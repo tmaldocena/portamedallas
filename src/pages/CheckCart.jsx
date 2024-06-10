@@ -70,7 +70,7 @@ const CheckCart = () => {
             <div className="divider" />
             <div className="w-full text-right">
                 <h5 className="text-2xl font-bold my-6">Total a pagar: ${getTotal()}</h5>
-                <button className={ cart.length == 0 ? "btn btn-disabled btn-outline" : "btn btn-primary"}>Continuar con el pago</button>
+                <Link to='/checkout' className={ cart.length == 0 ? "btn btn-disabled btn-outline" : "btn btn-primary"}>Continuar con el pago</Link>
             </div>
         </div>
     )

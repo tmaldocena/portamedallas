@@ -17,30 +17,31 @@ const Shop = () => {
         colors: ['blue', 'orange', 'black', 'pink']
     });
 
+
     const handleInputChange = (e) => {
         const searchTerm = e.target.value;
         setSearchItem(searchTerm)
         const filteredItems = products.filter((user) =>
-            user.tipo.toLowerCase().includes(searchTerm.toLowerCase())
+            user.product_name.toLowerCase().includes(searchTerm.toLowerCase())
         );
         setFilteredItems(filteredItems);
     }
 
     const filterProducts = () => {
         return filteredItems.filter((prod) => 
-            prod.valor <= filters.maxPrice
+            prod.product_price <= filters.maxPrice
         )
     }
 
 
     let fiProd = filterProducts()
 
-    fiProd = filteredItems.filter((prod) =>  prod.category === filters.category || filters.category === 'all')
+    fiProd = filteredItems.filter((prod) =>  prod.product_category === filters.category || filters.category === 'all')
 
     console.log(fiProd);
     
     return (
-        <section className={"w-full pt-[4.8rem] text-primary font-open"} >
+        <section className={"w-full text-primary font-open"} >
             <div className="w-full bg-accent py-8">
                 <h2 className="text-center text-3xl">Portamedallas</h2>
             </div>

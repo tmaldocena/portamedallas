@@ -1,8 +1,42 @@
+import { useEffect } from "react";
 import { useState } from "react"
 
 const Contact = () => {
 
   const [intitutional, setIntitutional] = useState(false);
+
+  const [products, setProducts] = useState([]);
+
+
+/*   const fetchingProducts = async () => {
+
+    try{
+      const res = await fetch('http://localhost:3000/api');
+
+      if(!res.ok){
+        throw new Error('Fetching products has an error');
+      }
+
+      const data = res.json();
+      setProducts(data);
+      console.log(data)
+    } catch (error) {
+
+      console.log('There was an error in fetch');
+    }
+  }
+ */
+
+  const fetchingProducts = async () => {
+    fetch('http://localhost:3000/api')
+      .then( (res) => {
+        setProducts(res.json());
+      }).catch( (err) => console.log("ERROR! ", err))
+  }
+  
+  useEffect(() => {
+    fetchingProducts();
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -22,6 +56,11 @@ const Contact = () => {
       <div className="flex lg:flex-row flex-col justify-evenly items-center">
         <div className="lg:w-2/5 w-full">
           <h1 className="text-3xl font-bold my-4 lg:text-left text-center">Contacto</h1>
+          { products.map((p, index) => {
+              return (
+                <span key={index}>{p}</span>
+              )
+          }) }
           <p className="my-4 lg:text-left text-center">¿Tienes alguna propuesta institucional? ¿Algúna duda con respecto a compras? ¿Algún comentario o sugerencia? Estamos disponibles para escucharle atentamente.</p>
           <ul className="my-4 flex flex-col lg:items-start items-center">
             <li className="flex flex-row align-middle gap-4 my-2 font-semibold"><box-icon name="envelope" color="#CE1126"/>samuelcastro@eltrolley.com</li>

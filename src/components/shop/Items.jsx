@@ -7,6 +7,7 @@ const Items = ({ products }) => {
 
     //console.log(products);
 
+
     return (
         <div className="lg:w-4/5 w-full justify-center lg:px-8 px-4 flex flex-wrap items-start lg:gap-4 gap-8">
                 { products.map((prod,key) => {

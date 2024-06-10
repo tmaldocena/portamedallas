@@ -6,6 +6,7 @@ import Contact from './pages/Contact';
 import Shop from './pages/Shop';
 import ViewItem from './pages/ViewItem';
 import CheckCart from './pages/CheckCart';
+import Checkout from './pages/Checkout';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
           <Route path='/item/:id' element={ <ViewItem /> } />
           <Route path='/contact' element={ <Contact />} />
           <Route path='/cart' element={ <CheckCart /> } />
+          <Route path='/checkout' element={ <Checkout /> } />
           <Route path='*' index element={ <Error404 /> }/>
       </Routes>
     </DefaultLayout>

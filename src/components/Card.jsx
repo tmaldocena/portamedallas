@@ -33,14 +33,14 @@ const Card = ({ item }) => {
                     </div>
                 )
             }
-            <Link to={'/item/' + item.id}>
-                <figure><img src={item.firstImage} alt="Portamedallas" /></figure>
+            <Link to={'/item/' + item.product_id}>
+                <figure><img src={`./assets/products/${item.product_slug}/${item.product_slug}.jpg`} alt="Portamedallas" /></figure>
             </Link>
             <div className="card-body">
                 <h2 className="card-title text-base">
-                    {item.tipo}
+                    {item.product_name}
                 </h2>
-                <p>${item.valor}</p>
+                <p>${item.product_price}</p>
                 <div className="card-actions justify-between items-center">
                     <div>
                         <button className="btn btn-sm btn-square" onClick={decrementCounter}>-</button>

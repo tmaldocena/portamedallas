@@ -1,45 +1,102 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Filters from "../components/shop/Filters"
 import Items from "../components/shop/Items"
-import products from '../utils/products.json';
-
-
 
 
 const Shop = () => {
-    
+
     const [searchItem, setSearchItem] = useState('')
-    const [filteredItems, setFilteredItems] = useState(products)
+    const [filteredItems, setFilteredItems] = useState([])
 
     const [filters, setFilters] = useState({
         category: 'all',
         maxPrice: 150001,
-        colors: ['blue', 'orange', 'black', 'pink']
+        colors: ['blue', 'orange', 'black', 'pink'],
+        orderBy: 'name-asc'
     });
 
+    const fetchingData = async () => {
+        try {
+            const res = fetch('http://localhost:3000/api/products')
+
+            if (!res.ok) {
+                console.log('There was an error!');
+            }
+
+            const json = await (await res).json()
+
+            console.log(json)
+            setFilteredItems(json);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        fetchingData()
+    }, []);
 
     const handleInputChange = (e) => {
         const searchTerm = e.target.value;
         setSearchItem(searchTerm)
-        const filteredItems = products.filter((user) =>
+        console.log(searchTerm);
+        const filtered = filteredItems.filter((user) =>
             user.product_name.toLowerCase().includes(searchTerm.toLowerCase())
         );
-        setFilteredItems(filteredItems);
+        setFilteredItems(filtered);
     }
 
+
     const filterProducts = () => {
-        return filteredItems.filter((prod) => 
+        return filteredItems.filter((prod) =>
             prod.product_price <= filters.maxPrice
         )
     }
 
-
     let fiProd = filterProducts()
 
-    fiProd = filteredItems.filter((prod) =>  prod.product_category === filters.category || filters.category === 'all')
+    const sortByName = (type) => {
+        if (type === 'asc') {
+            fiProd.sort((a, b) => {
+                const nameA = a.product_name.toUpperCase(); // ignore upper and lowercase
+                const nameB = b.product_name.toUpperCase(); // ignore upper and lowercase
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) {
+                    return 1;
+                }
+
+                // names must be equal
+                return 0;
+            });
+        } else {
+            if (type === 'desc') {
+                fiProd.sort((a, b) => {
+                    const nameA = a.product_name.toUpperCase(); // ignore upper and lowercase
+                    const nameB = b.product_name.toUpperCase(); // ignore upper and lowercase
+                    if (nameA > nameB) {
+                        return -1;
+                    }
+                    if (nameA < nameB) {
+                        return 1;
+                    }
+
+                    // names must be equal
+                    return 0;
+                });
+            }
+        }
+    }
+
+
+
+
+    fiProd = filteredItems.filter((prod) => prod.product_category === filters.category || filters.category === 'all')
+
 
     console.log(fiProd);
-    
+
     return (
         <section className={"w-full text-primary font-open"} >
             <div className="w-full bg-accent py-8">
@@ -58,10 +115,10 @@ const Shop = () => {
                             <box-icon name='chevron-down'></box-icon>
                         </div>
                         <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                            <li>Precio más bajo</li>
-                            <li>Precio más alto</li>
-                            <li>Por nombre (A-Z)</li>
-                            <li>Por nombre (Z-A)</li>
+                            <li className="btn btn-ghost">Precio más bajo</li>
+                            <li className="btn btn-ghost">Precio más alto</li>
+                            <li className="btn btn-ghost" onClick={() => setFilters({ ...filters, orderBy: 'asc' })}>Por nombre (A-Z)</li>
+                            <li className="btn btn-ghost" onClick={() => setFilters({ ...filters, orderBy: 'desc' })}>Por nombre (Z-A)</li>
                         </ul>
                     </div>
                 </div>

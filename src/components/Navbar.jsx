@@ -5,7 +5,7 @@ import UseCart from '../hooks/useCart';
 
 
 const Navbar = () => {
-    const { cart, clearCart, getTotal } = UseCart()
+    const { cart, clearCart, getTotal, getCurrency } = UseCart()
 
     console.log(cart);
 
@@ -13,7 +13,7 @@ const Navbar = () => {
 
     return (
         <>
-            <header className='flex flex-col'>
+            <header className='lg:flex md:flex flex-col hidden'>
                 <div className='bg-accent px-16 flex gap-4 justify-center'>
                     <span><strong>Teléfono:</strong> 3107719636</span>
                     <span><strong>Whatsapp:</strong> 320 6348134</span>
@@ -34,18 +34,19 @@ const Navbar = () => {
                                 <box-icon type='solid' name='user' color='#fce7f3'></box-icon>
                             </div>
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                                <li><a>Perfil</a></li>
-                                <li><a>Mis pedidos</a></li>
+                                <li><Link to='/profile'>Perfil</Link></li>
+                                <li><Link to='/pedidos'>Mis pedidos</Link></li>
                                 <li><a>Cerrar sesión</a></li>
                             </ul>
                         </div>
                         <div className="drawer drawer-end w-auto">
                             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-                            <div className="drawer-content">
+                            <div className="drawer-content indicator">
                                 {/* Page content here */}
+                                <span className="indicator-item badge badge-accent">{ cart.length }</span>  
                                 <label htmlFor="my-drawer-4" className="drawer-button btn btn-ghost btn-circle"><box-icon name='cart' color='#fce7f3'></box-icon></label>
                             </div>
-                            <div className="drawer-side">
+                            <div className="drawer-side z-50">
                                 <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
                                 <ul className="menu justify-end p-4 w-80 min-h-full bg-base-200 text-base-content">
                                     {/* Sidebar content here */}
@@ -56,12 +57,12 @@ const Navbar = () => {
                                                     <span className='flex flex-row hover:bg-base-200 hover:text-primary'>
                                                         <div className="avatar">
                                                             <div className="w-8 rounded">
-                                                                <img src={prod.firstImage} />
+                                                                <img src={`./assets/products/${prod.product_slug}/${prod.product_slug}.jpg`} />
                                                             </div>
                                                         </div>
                                                         <div className='flex flex-col'>
-                                                            <span>{prod.tipo}</span>
-                                                            <span className='text-xs'>${prod.valor}</span>
+                                                            <span>{prod.product_name}</span>
+                                                            <span className='text-xs'>${prod.product_price}</span>
                                                         </div>
                                                     </span>
                                                     <span>x{prod.quantity}</span>
@@ -69,7 +70,7 @@ const Navbar = () => {
                                             )
                                         })}
                                     </ul>
-                                    <li className='font-bold text-xl text-center text-primary mb-2'>Total: ${getTotal()}</li>
+                                    <li className='font-bold text-xl text-center text-primary mb-2'>Total: {getCurrency(getTotal())}</li>
 
                                     <li className='btn btn-sm btn-accent mb-4' onClick={() => clearCart()}><a>Vaciar Carrito</a></li>
 

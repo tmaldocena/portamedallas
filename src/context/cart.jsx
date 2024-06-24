@@ -7,12 +7,14 @@ export const CartContext = createContext();
 
 // 2. crear proveedor
 export function CartProvider ({ children }) {
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
 
     const addToCart = (product, quantity) => {
         const productInCart = cart.findIndex(item => item.id === product.id)
 
-        if(productInCart >= 0){
+        console.log(product);
+
+        if(productInCart > 0){
             const newCart = structuredClone(cart);
             newCart[productInCart].quantity += quantity;
             return setCart(newCart);
@@ -25,23 +27,30 @@ export function CartProvider ({ children }) {
                 quantity: quantity
             }
         ]))
-
     }
 
     const removeCart = product => {
-        setCart( prevState => prevState.filter(item => item.id !== product.id))
+        console.log(product)
+        setCart( prevState => prevState.filter(item => item.product_id !== product.product_id))
+
+        localStorage.setItem('cart', JSON.stringify(cart))
     }
 
     const clearCart = () => {
         setCart([]);
+        localStorage.setItem('cart', JSON.stringify([]));
     }
 
     const getTotal = () => {
         let suma = 0;
         cart.forEach((prod) => {
-            suma += prod.valor * prod.quantity;
+            suma += prod.product_price * prod.quantity;
         })
         return suma;
+    }
+
+    const getCurrency = (price) => {
+        return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'COP', currencyDisplay: 'narrowSymbol' }).format(price);
     }
 
     return (
@@ -50,7 +59,8 @@ export function CartProvider ({ children }) {
             addToCart,
             clearCart,
             removeCart,
-            getTotal
+            getTotal,
+            getCurrency
         }}>
             {children}
         </CartContext.Provider>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import useCart from "../hooks/useCart.js";
 
 const Card = ({ item }) => {
-    const { addToCart } = useCart()
+    const { addToCart, cart } = useCart()
 
     const [amount, setAmount] = useState(1);
     const [showAlert, setShowAlert] = useState(false);
@@ -20,6 +20,9 @@ const Card = ({ item }) => {
             setShowAlert(false)
         }, 2000);
         setShowAlert(true);
+
+        console.log(cart);
+        localStorage.setItem('cart', JSON.stringify(cart))
     }
 
     return (

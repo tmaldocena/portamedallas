@@ -1,21 +1,50 @@
 import { useEffect, useState } from 'react';
-import products from '../utils/products.json';
 import { useLocation } from 'react-router-dom';
 import ViewImage from '../components/product/ViewImage';
 import { Link } from 'react-router-dom';
 import UseCart from '../hooks/useCart';
 
 
+
+
 const ViewItem = () => {
-    
+
+    console.log('HOLAAA');
+
     const { addToCart } = UseCart()
-    
-    const location = useLocation();
-    const id = location.pathname.slice(6);
+
     const [item, setItem] = useState();
 
     const [amount, setAmount] = useState(1);
     const [showAlert, setShowAlert] = useState(false);
+
+    const location = useLocation();
+    const id = location.pathname.slice(6);
+
+    const getProduct = async () => {
+        try {
+            const res = fetch(`http://localhost:3000/api/products/${id}`)
+
+            if (!res.ok) {
+                console.log('There was an error!');
+            }
+
+            const json = await (await res).json()
+
+            console.log(json);
+            setItem(json);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    
+    useEffect(() => {
+        getProduct();
+
+        return setItem({});
+    }, []);
+
     const incrementCounter = () => setAmount(amount + 1);
     let decrementCounter = () => setAmount(amount - 1);
     if (amount < 2) {
@@ -29,14 +58,11 @@ const ViewItem = () => {
         }, 2000);
         setShowAlert(true);
     }
-    
-    
-    useEffect(() => {
-        const product = products.find( prod => prod.product_id === id);
-        setItem(product);
-    }, []);
 
-    return (
+
+
+
+     return (
         <div className="min-h-screen bg-base-200 lg:px-16 md:px-8 sm:px-4 py-24 font-open">
             {
                 showAlert && (
@@ -57,13 +83,13 @@ const ViewItem = () => {
                         </ul>
                     </div>
 
-                    <ViewImage item={item} />
+                    <ViewImage item={id} />
                 </div>
 
                 <div className='lg:w-auto w-full lg:px-0 md:px-8 px-4 lg:mt-0 mt-8'>
-                    <h1 className="text-4xl font-bold">{item.product_name}</h1>
-                    <span>{item.product_id}</span>
-                    <h3 className='lg:my-4 my-8 text-3xl'>${item.product_price}</h3>
+                    <h1 className="text-4xl font-bold">{item?.product_name}</h1>
+                    <span>{item?.product_id}</span>
+                    <h3 className='lg:my-4 my-8 text-3xl'>${item?.product_price}</h3>
                     <label className="w-auto flex flex-row items-center my-4">
                         <div className="label">
                             <span className="label-text">Cantidad:</span>

@@ -22,16 +22,16 @@ function Autocomplete() {
         <div className='relative text-center w-full'>
             <li className="form-control">
                 <label className="input input-ghost flex items-center gap-2 text-primary" id='searchBar'>
-                    <input type="text" className="grow " placeholder="Buscar portamedallas" onChange={handleInputChange} value={searchItem} onBlur={() => setFilteredItems([])}/>
+                    <input type="text" className="grow " placeholder="Buscar portamedallas" onChange={handleInputChange} value={searchItem} />
                     <box-icon name='search' color='#848587'/>
                 </label>
             </li>
             {searchItem.length >= 3 && (
                 <div className="absolute bg-base-100 w-full z-10">
                     {filteredItems.length > 0 ? (
-                        <ul>
+                        <ul >
                             {filteredItems.map((result, index) => (
-                                <Link to={'/item/' + result.product_id} key={index}>
+                                <Link to={'/item/' + result.product_id} key={index} onClick={() => searchItem('')}>
                                     <li className='p-2 hover:bg-base-200 hover:text-primary'>
                                         <span className='flex flex-row gap-4 '>
                                             <div className="avatar">
@@ -49,7 +49,7 @@ function Autocomplete() {
                             ))}
                         </ul>
                     ) : (
-                        <div>No se encontraron resultados</div>
+                        <div></div>
                     )}
                 </div>
             )}
